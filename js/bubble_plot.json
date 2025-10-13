@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Influencer Engagement Bubble Plot",
+  "data": {"url": "./data/youtube_data_cleaned.csv"},
+  "width": 800,
+  "height": 400,
+
+  "transform": [
+        { "filter": "datum.Avg_views > 0" },
+        { "filter": "datum.Avg_likes > 0" },
+        { "filter": "datum.Sno <= 100" }],
+
+
+  "mark": {"type": "circle", "opacity": 0.7, "stroke": "black", "strokeWidth": 0.5},
+  "encoding": {
+    "x": {
+      "field": "Avg_views",
+      "type": "quantitative",
+      "title": "Average Views",
+      "scale": {"type" : "log", "domain": [100, 100000000]}
+    },
+    "y": {
+      "field": "Avg_likes",
+      "type": "quantitative",
+      "title": "Average Likes",
+      "scale": {"type" : "log", "domain": [1, 10000000]}
+    },
+    "size": {
+      "field": "Subscribers",
+      "type": "quantitative",
+      "title": "Subscribers",
+      "scale": {"range": [10, 2000]}
+    },
+
+    "tooltip": [
+        {"field": "Name", "type": "nominal"},
+        {"field": "Subscribers", "type": "quantitative"},
+        {"field": "Avg_views", "type": "quantitative"},
+        {"field": "Avg_likes", "type": "quantitative"}
+        ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"titleFontSize": 12, "labelFontSize": 11}
+  }
+}

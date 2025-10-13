@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Distribution of Influencers by Category",
+  "data": {"url": "data/SM.csv"},
+  "mark": {"type": "arc", "outerRadius": 100},
+
+  "width": 800,
+  "height": 400,
+  "encoding": {
+    "theta": {
+      "field": "gender",
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Influencers"
+    },
+    "color": {
+      "field": "gender",
+      "type": "nominal",
+      "title": "Category"
+    }
+  }
+}

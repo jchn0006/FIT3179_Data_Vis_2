@@ -1,0 +1,76 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Top YouTubers by Subscribers" },
+    "data": { "url": "./data/youtube_data_cleaned.csv" },
+    "width": 800,
+    "height": 400,
+    
+    "transform": [
+        {
+            "calculate": "datum.Category_2 == '' ? 'None' : datum.Category_2",
+            "as": "Category_2"
+        },
+        {
+            "calculate": "indexof(['Animation','Music & Dance','Movies','ASMR','Humor','Mystery'], datum.Category_2) >= 0 ? 'Entertainment' : datum.Category_2",
+            "as": "Category_2"
+        },
+        {
+            "calculate": "indexof(['Science & Technology','Education','Design/art','News & Politics'], datum.Category_2) >= 0 ? 'Education & Knowledge' : datum.Category_2",
+            "as": "Category_2"
+        },
+        {
+            "calculate": "indexof(['Lifestyle','Daily vlogs','Fitness','Food & Drinks','Travel'], datum.Category_2) >= 0 ? 'Lifestyle & Hobbies' : datum.Category_2",
+            "as": "Category_2"
+        },
+        {
+            "calculate": "indexof(['Animals & Pets','Autos & Vehicles'], datum.Category_2) >= 0 ? 'Animals & Nature' : datum.Category_2",
+            "as": "Category_2"
+        },
+        {
+            "calculate": "indexof(['Video games','Sports','Toys'], datum.Category_2) >= 0 ? 'Gaming & Sports' : datum.Category_2",
+            "as": "Category_2"
+        },
+        {
+            "calculate": "datum.Category_2 == 'None' ? 'Other / None' : datum.Category_2",
+            "as": "Category_2"
+        },
+        
+        {
+        "window": [{"op": "rank", "as": "index"}],
+        "sort": [{"field": "Category_2", "order": "descending"}, {"field": "Name", "order": "ascending"}]
+        },
+        {
+        "calculate": "floor((datum.index - 1) / 40)", 
+        "as": "row"
+        },
+        {
+        "calculate": "(datum.index - 1) % 40", 
+        "as": "col"
+        },
+        {
+        "sort": [{"field": "Category_2", "order": "ascending"}]
+        }
+    ],
+
+    "mark": {
+        "type": "rect",
+        "width": 12,
+        "height": 12
+    },
+
+    "encoding": {
+        "x": {"field": "col", "type": "ordinal", "axis": null},
+        "y": {"field": "row", "type": "ordinal", "axis": null},
+        "color": {
+        "field": "Category_2",
+        "type": "nominal",
+        "title": "Genre"
+        },
+
+        "tooltip": [
+        {"field": "Name", "type": "nominal"},
+        {"field": "Category_2", "type": "nominal"}
+        ]
+    }
+
+}

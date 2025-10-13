@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Top YouTubers by Subscribers" },
+  "data": { "url": "./data/youtube_data_cleaned.csv" },
+  "width": 800,
+  "height": 400,
+
+  "params": [
+    {
+    "name": "Subscribers_filter",
+    "value": 50000000,
+    "bind": {
+        "input": "range",
+        "min": 10000000,
+        "max": 250000000,
+        "step": 10000,
+        "name": "Subscriber Count: "
+        } 
+    },
+    {
+      "name": "CountrySelect",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "India",
+          "United States",
+          "Brazil",
+          "United Kingdom",
+          "Mexico"
+        ],
+        "name": "Select Country: "
+      }
+    }
+
+
+
+    ],
+
+
+    "transform": [
+        { "filter": "datum.Subscribers >= Subscribers_filter" },
+        {"filter": "CountrySelect == 'All' || datum.Country == CountrySelect"} 
+    ],
+
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "Subscribers", "type": "quantitative", "title": "Subscribers" },
+    "y": { "field": "Name", "type": "nominal", "sort": "-x" },
+    "tooltip": [
+      { "field": "Name" },
+      { "field": "Subscribers", "format": ",.0f"},
+      { "field": "Country" }
+    ]
+  }
+}

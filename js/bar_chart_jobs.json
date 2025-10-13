@@ -1,0 +1,14 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Top YouTubers by Subscribers" },
+  "data": { "url": "./data/SM.csv" },
+
+  "width": 800,
+  "height": 400,
+
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "job_type", "type": "nominal", "title": "Subscribers" },
+    "y": { "field": "daily_social_media_time", "aggregate" : "average", "type": "quantitative", "sort": "-x" }
+  }
+}

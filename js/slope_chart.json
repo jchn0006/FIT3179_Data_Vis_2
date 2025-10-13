@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Change in Average Social Media Time (2023 vs 2024)",
+  "data": {"url": "data/SM.csv"},
+
+  "width": 800,
+  "height": 400,
+
+
+  "mark": {"type": "line", "point": true},
+
+
+  "encoding": {
+    "x": {"field": "uses_focus_apps", "type": "nominal", "title": "Year"},
+    "y": {"field": "daily_social_media_time", "aggregate":"average", "type": "quantitative", "title": "Average Time (hours/day)"}
+  },
+  "config": {
+    "line": {"strokeWidth": 2},
+    "point": {"filled": true, "size": 50}
+  }
+}
