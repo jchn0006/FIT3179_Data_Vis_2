@@ -11,7 +11,7 @@
             "as": "Category_2"
         },
         {
-            "calculate": "indexof(['Animation','Music & Dance','Movies','ASMR','Humor','Mystery'], datum.Category_2) >= 0 ? 'Entertainment' : datum.Category_2",
+            "calculate": "indexof(['Animation','Movies','ASMR','Humor','Mystery'], datum.Category_2) >= 0 ? 'Entertainment' : datum.Category_2",
             "as": "Category_2"
         },
         {
@@ -20,10 +20,6 @@
         },
         {
             "calculate": "indexof(['Lifestyle','Daily vlogs','Fitness','Food & Drinks','Travel'], datum.Category_2) >= 0 ? 'Lifestyle & Hobbies' : datum.Category_2",
-            "as": "Category_2"
-        },
-        {
-            "calculate": "indexof(['Animals & Pets','Autos & Vehicles'], datum.Category_2) >= 0 ? 'Animals & Nature' : datum.Category_2",
             "as": "Category_2"
         },
         {
@@ -36,7 +32,7 @@
         },
         
         {
-        "window": [{"op": "rank", "as": "index"}],
+        "window": [{"op": "count", "as": "index"}],
         "sort": [{"field": "Category_2", "order": "descending"}, {"field": "Name", "order": "ascending"}]
         },
         {
@@ -52,25 +48,28 @@
         }
     ],
 
-    "mark": {
-        "type": "rect",
-        "width": 12,
-        "height": 12
-    },
-
-    "encoding": {
-        "x": {"field": "col", "type": "ordinal", "axis": null},
-        "y": {"field": "row", "type": "ordinal", "axis": null},
-        "color": {
-        "field": "Category_2",
-        "type": "nominal",
-        "title": "Genre"
+    "layer" : [
+        {"mark": {
+            "type": "rect",
+            "width": 12,
+            "height": 12
         },
 
-        "tooltip": [
-        {"field": "Name", "type": "nominal"},
-        {"field": "Category_2", "type": "nominal"}
-        ]
-    }
+        "encoding": {
+            "x": {"field": "col", "type": "ordinal", "axis": null},
+            "y": {"field": "row", "type": "ordinal", "axis": null},
+            "color": {
+            "field": "Category_2",
+            "type": "nominal",
+            "title": "Genre"
+            },
+
+            "tooltip": [
+            {"field": "Name", "type": "nominal"},
+            {"field": "Category_2", "type": "nominal"}
+            ]
+        }}
+    ]
+
 
 }

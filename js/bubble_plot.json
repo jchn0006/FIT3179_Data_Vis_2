@@ -2,43 +2,109 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Influencer Engagement Bubble Plot",
   "data": {"url": "./data/youtube_data_cleaned.csv"},
-  "width": 800,
-  "height": 400,
+  "width": 1200,
+  "height": 600,
+
+  "params": [
+    {
+      "name": "MinSubs",
+      "value": 50000000,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 200000000,
+        "step": 5000000,
+        "name": "Minimum Subscribers: "
+      }
+    }
+  ],
 
   "transform": [
         { "filter": "datum.Avg_views > 0" },
         { "filter": "datum.Avg_likes > 0" },
-        { "filter": "datum.Sno <= 100" }],
+        { "filter": "datum.Subscribers >= MinSubs" },
+
+        {"calculate": "split(datum.text_annotation_raw, ';')", "as": "lines"},
+        {"flatten": ["lines"]},
+        {"window": [{"op": "rank", "as": "line_num"}]},
+        {
+          "calculate": "datum.latitude - (datum.line_num - 1) * 6",
+          "as": "lat_shift"
+        }
+      
+      ],
 
 
-  "mark": {"type": "circle", "opacity": 0.7, "stroke": "black", "strokeWidth": 0.5},
-  "encoding": {
-    "x": {
-      "field": "Avg_views",
-      "type": "quantitative",
-      "title": "Average Views",
-      "scale": {"type" : "log", "domain": [100, 100000000]}
-    },
-    "y": {
-      "field": "Avg_likes",
-      "type": "quantitative",
-      "title": "Average Likes",
-      "scale": {"type" : "log", "domain": [1, 10000000]}
-    },
-    "size": {
-      "field": "Subscribers",
-      "type": "quantitative",
-      "title": "Subscribers",
-      "scale": {"range": [10, 2000]}
-    },
+  "layer" : [
+    {"mark": {"type": "circle", "opacity": 0.7, "stroke": "black", "strokeWidth": 0.5},
+    "encoding": {
+      "x": {
+        "field": "Avg_views",
+        "type": "quantitative",
+        "title": "Average Views",
+        "scale": {"type" : "log", "domain": [100, 100000000]}
+      },
+      "y": {
+        "field": "Avg_likes",
+        "type": "quantitative",
+        "title": "Average Likes",
+        "scale": {"type" : "log", "domain": [1, 10000000]}
+      },
+      "size": {
+        "field": "Subscribers",
+        "type": "quantitative",
+        "title": "Subscribers",
+        "scale": {"range": [10, 2000]}
+      },
+      "opacity": {
+                  "condition": {
+                    "test": "datum.Subscribers > 100000000",
+                    "value": 1
+                  },
+                  "value": 0.5},
 
-    "tooltip": [
-        {"field": "Name", "type": "nominal"},
-        {"field": "Subscribers", "type": "quantitative"},
-        {"field": "Avg_views", "type": "quantitative"},
-        {"field": "Avg_likes", "type": "quantitative"}
-        ]
-  },
+      "tooltip": [
+          {"field": "Name", "type": "nominal"},
+          {"field": "Subscribers", "type": "quantitative"},
+          {"field": "Avg_views", "type": "quantitative"},
+          {"field": "Avg_likes", "type": "quantitative"}
+      ] }
+    },
+      
+
+    {"mark": {"type": "text", "align": "left", "dx": 8, "dy": 0, "fontSize": 12},
+              "encoding": {
+              "x": {"field": "Avg_views", "type": "quantitative", "scale": {"type" : "log", "domain": [100, 100000000]}},
+              "y": {"field": "Avg_likes", "type": "quantitative", "scale": {"type" : "log", "domain": [1, 10000000]}},
+              "text": {"field": "Name"},
+              "opacity": {
+                "condition": {
+                  "test": "datum.Subscribers > 100000000",
+                  "value": 1
+                },
+                "value": 0
+              }
+          }
+      },
+      
+    {"mark": {"type": "text", "align": "left", "dx": 8, "dy": 0, "fontSize": 12},
+              "encoding": {
+              "x": {"field": "Avg_views", "type": "quantitative", "scale": {"type" : "log", "domain": [100, 100000000]}},
+              "y": {"field": "Avg_likes", "type": "quantitative", "scale": {"type" : "log", "domain": [1, 10000000]}},
+              "text": {"value" : "TEDx has the lowest Average Views and Likes;because they posted 15,900 Videos"},
+              "opacity": {
+                "condition": {
+                  "test": "datum.Name == 'TEDx Talks'",
+                  "value": 1
+                },
+                "value": 0
+              }
+          }
+      }
+      
+      
+    ]
+  ,
   "config": {
     "view": {"stroke": null},
     "legend": {"titleFontSize": 12, "labelFontSize": 11}

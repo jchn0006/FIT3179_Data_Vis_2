@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Number of Youtuber in the Top 1000 from each country",
-  "width": 800,
+  "width": 1200,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
@@ -47,7 +47,7 @@
         }
       ]
       ,
-      "mark": {"type": "circle", "color": "#519e4a", "opacity": 0.7, "stroke": "black"},
+      "mark": {"type": "circle", "color": "#CD201F", "opacity": 0.7, "stroke": "black"},
         "encoding": {
             "longitude": {"field": "longitude", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},

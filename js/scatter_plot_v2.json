@@ -6,7 +6,15 @@
   "height": 400,
 
   
-  "mark": "boxplot",
+  
+  "layer": [
+        {
+        "mark": {"type": "line", "point": false}
+        },
+        {
+        "mark": {"type": "circle", "size": 80}
+        }
+    ],
 
   "encoding": {
     "x": {
@@ -22,6 +30,6 @@
       "title": "Average Likes",
       "scale": {"type" : "linear", "domain": [0, 8]}
     },
-    "color": {"field": "Category", "type": "nominal", "legend": null}
+    "color": {"field": "Relationship_Status", "type": "nominal", "scale": {"domain": ["Single", "In Relationship", "Complicated"], "range": ["#1f77b4", "#ff8B00", "#ff7f0e"]}}
   }
 }

@@ -1,102 +1,105 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
-    <!-- Import pure.css -->
+
+  <!-- Import pure.css -->
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
     integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-  
+
 </head>
+
 <body>
 
-    <div class="page">
+  <div class="page">
 
-        <!-- pure grid group -->
-        <div class="pure-g">
-            <div class="pure-u-1-2">
-                <div id="bubble_chart_top_1000_Youtubers" class="vis-container">
-                </div>
-            </div>
-
-
-            <div class="pure-u-1-2">
-                <div id="bar_chart_top_youtubers" class="vis-container">
-                </div>
-            </div>
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="bubble_chart_top_1000_Youtubers" class="vis-container">
         </div>
+      </div>
+    </div>
 
-
-        <div class="pure-g">
-            <div class="pure-u-1-2">
-                <div id="grid_plot" class="vis-container">
-                </div>
-            </div>
-
-
-            <div class="pure-u-1-2">
-                <div id="bubble_plot" class="vis-container">
-                </div>
-            </div>
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="bar_chart_top_youtubers" class="vis-container">
         </div>
-
-
-        <div class="pure-g">
-            <div class="pure-u-1-2">
-                <div id="scatter_plot" class="vis-container">
-                </div>
-            </div>
-
-
-            <div class="pure-u-1-2">
-                <div id="pie_chart" class="vis-container">
-                </div>
-            </div>
-        </div>
-
-
-        <div class="pure-g">
-            <div class="pure-u-1-2">
-                <div id="bar_chart_jobs" class="vis-container">
-                </div>
-            </div>
-
-
-            <div class="pure-u-1-2">
-                <div id="histogram" class="vis-container">
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="pure-g">
-            <div class="pure-u-1-1">
-                <div id="slope_chart" class="vis-container">
-                </div>
-            </div>
-        </div>
-
+      </div>
     </div>
 
 
-<script type="text/javascript">
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="grid_plot" class="vis-container">
+        </div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="bubble_plot" class="vis-container">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="scatter_plot" class="vis-container">
+        </div>
+      </div>
+
+
+      <div class="pure-u-1-2">
+        <div id="pie_chart" class="vis-container">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="histogram" class="vis-container">
+        </div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="scatter_plot_v2" class="vis-container">
+        </div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="choropleth" class="vis-container">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script type="text/javascript">
     var bubble_chart_top_1000_Youtubers = "js/bubble_chart_top_1000_Youtubers.json";
     var bar_chart_top_youtubers = "js/bar_chart_top_youtubers.json";
     var grid_plot = "js/grid_plot.json";
     var bubble_plot = "js/bubble_plot.json";
     var scatter_plot = "js/scatter_plot.json";
     var pie_chart = "js/pie_chart.json";
-    var bar_chart_jobs = "js/bar_chart_jobs.json";
     var histogram = "js/histogram.json";
-    var slope_chart = "js/slope_chart.json";
+    var scatter_plot_v2 = "js/scatter_plot_v2.json";
+    var choropleth = "js/choropleth.json"
 
 
     vegaEmbed('#bubble_chart_top_1000_Youtubers', bubble_chart_top_1000_Youtubers, { "actions": false }).then(function (result) {
@@ -110,7 +113,7 @@
     vegaEmbed('#grid_plot', grid_plot, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
-    
+
     vegaEmbed('#bubble_plot', bubble_plot, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
@@ -123,21 +126,21 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#bar_chart_jobs', bar_chart_jobs, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
     vegaEmbed('#histogram', histogram, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#slope_chart', slope_chart, { "actions": false }).then(function (result) {
+    vegaEmbed('#scatter_plot_v2', scatter_plot_v2, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
+
+    vegaEmbed('#choropleth', choropleth, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
 
   </script>
 </body>
 
 </html>
-
-

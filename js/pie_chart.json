@@ -1,22 +1,24 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Distribution of Influencers by Category",
-  "data": {"url": "data/SM.csv"},
+  "data": {"url": "data/SMA.csv"},
   "mark": {"type": "arc", "outerRadius": 100},
 
   "width": 800,
   "height": 400,
   "encoding": {
     "theta": {
-      "field": "gender",
+      "field": "Most_Used_Platform",
       "aggregate": "count",
       "type": "quantitative",
-      "title": "Influencers"
+      "title": "Platform",
+      "sort": {"op": "count", "order" : "descending"}
     },
     "color": {
-      "field": "gender",
+      "field": "Most_Used_Platform",
       "type": "nominal",
-      "title": "Category"
+      "title": "Category",
+      "sort": {"op": "count", "order" : "descending"}
     }
   }
 }

@@ -1,22 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Top YouTubers by Subscribers" },
+  "title": { "text": "Top YouTubers by Subscribers", "fontSize" : 18 },
   "data": { "url": "./data/youtube_data_cleaned.csv" },
   "width": 800,
   "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
 
   "params": [
-    {
-    "name": "Subscribers_filter",
-    "value": 50000000,
-    "bind": {
-        "input": "range",
-        "min": 10000000,
-        "max": 250000000,
-        "step": 10000,
-        "name": "Subscriber Count: "
-        } 
-    },
     {
       "name": "CountrySelect",
       "value": "All",
@@ -36,20 +26,22 @@
 
 
 
-    ],
+  ],
 
 
     "transform": [
-        { "filter": "datum.Subscribers >= Subscribers_filter" },
-        {"filter": "CountrySelect == 'All' || datum.Country == CountrySelect"} 
+        {"filter": "CountrySelect == 'All' || datum.Country == CountrySelect"},
+        {"calculate": "datum.Subscribers / 1000000", "as": "Subscribers_Millions"},
+        {"window": [{"op": "rank", "as": "Rank"}], "sort": [{"field": "Subscribers_Millions", "order": "descending"}]},
+        {"filter": "datum.Rank <= 10"} 
     ],
 
   "mark": "bar",
   "encoding": {
-    "x": { "field": "Subscribers", "type": "quantitative", "title": "Subscribers" },
-    "y": { "field": "Name", "type": "nominal", "sort": "-x" },
+    "x": { "field": "Subscribers", "type": "quantitative", "title": "Subscribers"},
+    "y": { "field": "Name", "type": "nominal", "sort": "-x", "axis": {"labelLimit": 0, "labelFontSize": 14, "labelPadding": 30}},
     "tooltip": [
-      { "field": "Name" },
+      { "field": "Name of Youtuber" },
       { "field": "Subscribers", "format": ",.0f"},
       { "field": "Country" }
     ]

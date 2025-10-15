@@ -2,12 +2,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Distribution of Daily Social Media Time",
-  "data": {"url": "data/SM.csv"},
+  "data": {"url": "data/SMA.csv"},
   
   
 
-  "repeat": ["sleep_hours","stress_level","days_feeling_burnout_per_month","job_satisfaction_score", "actual_productivity_score", "coffee_consumption_per_day"],
-  "repeat2": ["sleep_hours","stress_level","days_feeling_burnout_per_month","job_satisfaction_score", "actual_productivity_score", "coffee_consumption_per_day"],
+  "repeat": ["Sleep_Hours_Per_Night","Mental_Health_Score","Affects_Academic_Performance_Calculated","Conflicts_Over_Social_Media", "Addicted_Score"],
   "columns": 2,
   "spec": {
     "width": 400,
@@ -16,14 +15,15 @@
     "mark": {"type": "bar", "color": "#4682b4"},
 
     "transform": [
-          { "filter": "datum.daily_social_media_time > 0" },
-          { "filter": "datum.sleep_hours > 0" }],
+          { "filter": "datum.Avg_Daily_Usage_Hours > 0" },
+          { "calculate": "datum.Affects_Academic_Performance == 'Yes' ? 1 : 0", "as" : "Affects_Academic_Performance_Calculated"}
+        ],
 
 
 
     "encoding": {
       "x": {
-        "field": "daily_social_media_time",
+        "field": "Avg_Daily_Usage_Hours",
         "type": "quantitative",
         "bin": {"step" : 0.5},
         "title": "Time Spent on Social Media (hours/day)"
@@ -31,11 +31,10 @@
       "y": {
         "aggregate" : "average",
         "field":  {"repeat": "repeat"},
-        "type": "quantitative",
-        "title": {"repeat" : "repeat2"}
+        "type": "quantitative"
       },
       "tooltip": [
-        {"field": "daily_social_media_time", "bin": true, "title": "Hours/Day"},
+        {"field": "Avg_Daily_Usage_Hours", "bin": true, "title": "Hours/Day"},
         {"aggregate": "average", "field": "sleep_hours", "title": "Count"}
       ]
     }
