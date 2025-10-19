@@ -17,7 +17,7 @@
   "columns": 3,
   "spec": {
     "width": 250,
-    "height": 200,
+    "height": 150,
     "mark": {
       "type": "bar",
       "color": "#4682b4"
@@ -50,7 +50,7 @@
         "field": {
           "repeat": "repeat"
         },
-        "axis": {"titleFontSize": 14},
+        "axis": {"titleFontSize": 10},
         "type": "quantitative"
       },
       "tooltip": [

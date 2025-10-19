@@ -4,7 +4,7 @@
   "data": {
     "url": "data/SMA.csv"
   },
-  "height": 650,
+  "height": 450,
   "width": "container",
   "autosize": {"type": "fit", "contains": "padding"},
   "mark": {"type" : "boxplot"},

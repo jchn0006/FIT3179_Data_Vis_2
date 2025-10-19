@@ -42,7 +42,7 @@ p {
     display: block;
     unicode-bidi: isolate;
     height: 100%;
-    margin-top: 25%;
+    margin-top: 5%;
    margin-bottom: 0px;
 }
 
@@ -96,5 +96,5 @@ p3 {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 0px;
-  height: 700px;
+  height: 500px;
 }
