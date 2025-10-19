@@ -57,7 +57,7 @@
             "type": "nominal",
             "title": "Genre",
             "legend" : {"symbolSize" : 200, "titleFontSize": 12, "labelFontSize": 12},
-            "scale" : {"range" : ["#EE6C4D","#FED766","#009FB7","#575D90","#00AF54"]}
+            "scale" : {"range" : ["#ee4db8","#FED766","#009FB7","#575D90","#00AF54"]}
             },
 
             "tooltip": [
