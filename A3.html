@@ -13,24 +13,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- CSS file -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  
+
 
 </head>
 
 <body>
 
   <div class="page">
+    <h1>Social Media Visualisation</h1>
 
     <!-- pure grid group -->
+
+    <h2>Influencers of Social Media of 2022</h2>
+
     <div class="pure-g">
-      <div class="pure-u-1-2">
+
+
+      <div class="pure-u-3-4">
         <div id="bubble_chart_top_1000_Youtubers" class="vis-container">
+        </div>
+      </div>
+      <div class="pure-u-1-4">
+         <div class="description description-right">
+          <p>The country with the most Top 1000 Youtubers is the United States with 307, followed by India with 217 then Brazil in 82. Notice that the four out of the top five countries speak unique languages from the rest, this is probably due to the language barrier creating less competition.</p>
         </div>
       </div>
     </div>
 
     <div class="pure-g">
-      <div class="pure-u-1-2">
+      <div class="pure-u-1-3">
+         <div class="description description-left">
+          <p> The bar graph shows that the Youtuber with the most subscribers was T-series, then Cocomelon, PewDiePie, MrBeast and Kids Diana Show. Amongst each country it seems like the subscriber count has a slight exponetial curve.</p>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
         <div id="bar_chart_top_youtubers" class="vis-container">
         </div>
       </div>
@@ -42,50 +63,123 @@
         <div id="grid_plot" class="vis-container">
         </div>
       </div>
+      <div class="pure-u-1-2">
+         <div class="description description-right">
+          <p> This grid plot represents every Youtuber within the top 1000 as a unique square to represent their video genre type, with Entertainment being first then Music and Dance then Education Knowledge.</p>
+        </div>
+      </div>
     </div>
 
     <div class="pure-g">
-      <div class="pure-u-1-2">
+      <div class="pure-u-1-3">
+         <div class="description description-left">
+          <p>The bubble plot represents Youtubers, with Average Video Views versus Average Video Likes. The red line represents Youtubers who have have a like to view ratio as 1:25.
+            With the graph we can see that the Top 1000 Youtubers are around this 1:25 like-view ratio, despite number of videos posted not being a factor.
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
         <div id="bubble_plot" class="vis-container">
         </div>
       </div>
     </div>
 
+    <h2>Consumers of Social Media (Ages 18-24)</h2>
 
     <div class="pure-g">
-      <div class="pure-u-1-2">
+      <div class="pure-u-2-3">
+        <div id="choropleth" class="vis-container">
+        </div>
+      </div>
+       <div class="pure-u-1-3">
+         <div class="description description-right">
+          The histogram shows the average social media time per each country. 
+          With India, Russia, Turkey, Spain and Poland being the countries with the highest average hours spent on social media.
+         
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-3">
         <div id="scatter_plot" class="vis-container">
+        </div>
+      </div>
+      <div class="pure-u-1-3">
+         <div class="description description-middle">
+           <p>On the left is a box plot which suggests that age does not come into a factor to the number of hours of social media daily.
+            On the right shows a pie chart with users (18-24) most preferred Social Media Platform with Instagram in first, TikTok and Facebook following up.
+          It is interesting how majority of preferred platforms are more Entertainment based rather than communication based. </p>
         </div>
       </div>
 
 
-      <div class="pure-u-1-2">
+      <div class="pure-u-1-3">
         <div id="pie_chart" class="vis-container">
         </div>
       </div>
     </div>
 
 
+    <h2>Effects of Social Media on Young Adults (Ages 18-24)</h2>
+
+
     <div class="pure-g">
-      <div class="pure-u-1-2">
+      <div class="pure-u-2-3">
         <div id="histogram" class="vis-container">
+        </div>
+      </div>
+      <div class="pure-u-1-3">
+         <div class="description description-middle">
+          <p> These Histograms show how the amount of social media time affects one's lifestyle.
+              There are some clear negative correlations with time on social media and Mental Health Score and Sleep Hours Per Night.
+              There are also some clear positive correlations with time on social media and Conflicts over Social Media and Social Media Addiction and Affected Academic Performance.
+             </p>
         </div>
       </div>
     </div>
 
     <div class="pure-g">
+      <div class="pure-u-1-2">
+         <div class="description description-left">
+          <p> This scatterplot shows how Relationships affects social media times.
+            The chart suggests that between ages 18-20 there is little difference.
+          However the lines diverge at ages 21-24, with people being "Single" having the most amount
+        of social media time followed by "In a relationship" then "Complicated"</p>
+        </div>
+      </div>
       <div class="pure-u-1-2">
         <div id="scatter_plot_v2" class="vis-container">
         </div>
       </div>
     </div>
 
+
     <div class="pure-g">
-      <div class="pure-u-1-2">
-        <div id="choropleth" class="vis-container">
+      <div class="pure-u-1-1">
+        <h2>Conclusion</h2>
+         <div class="description description-left">
+          <p2>Using the following visualisations we can see that there are social media influencers all across the world spanning different nationalities and languages.
+            With also a relatively wide range of video genres however mostly Entertainment and Music based.
+            The most successful Youtubers have like-to-view ratios around 1:25.
+            Similarly young social media consumers are all over the world with no correlation between age and time spent on social media between the ages of 18-24.
+            We found that Social Media was mostly Used for Entertainmentas Instagram and Tiktok was majority of preferred social media.
+            However we also saw the devasting effects of social media showing negative effects on sleep hours, mental health, academic performance, social media conflicts and social media addiction.
+            Lastly we saw that the average social media time amongst relationship status was similar accept for older users who has a "complicated" relationship status which showed less social media time.
+          </p>
         </div>
       </div>
     </div>
+
+    <footer>
+      <p3>Designed by Jonathan Ch'ng</p3>
+      <p3>Date of Publication: 18/10/2025</p3>
+      <p3>Feel Free to share and adapt this visualisation</p3>
+      <p3>Thank you for the Ram Jas and Adil Shamim for the Datasets</p3>
+      <p3>Social Media Influencers in 2022: https://www.kaggle.com/datasets/ramjasmaurya/top-1000-social-media-channels</p3>
+      <p3>Students' Social Media Addiction: https://www.kaggle.com/datasets/adilshamim8/social-media-addiction-vs-relationships</p3>
+    </footer>
 
   </div>
 
@@ -137,6 +231,18 @@
     vegaEmbed('#choropleth', choropleth, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
+
+      // Wait until the whole page (and CSS layout) is ready
+    window.addEventListener("load", () => {
+      vegaEmbed("#bubble_chart_top_1000_Youtubers", spec, {actions: false})
+        .then(res => {
+          // 🔧 Force Vega to recompute the layout
+          res.view.resize();
+
+          // 🔁 Also keep it responsive when window resizes
+          window.addEventListener("resize", () => res.view.resize());
+        });
+    });
 
 
 

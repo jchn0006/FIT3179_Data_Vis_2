@@ -1,41 +1,72 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Distribution of Daily Social Media Time",
-  "data": {"url": "data/SMA.csv"},
-  
-  
+  "title": {"text" : "Histogram of Effects from Social Media Time", "fontSize": 22},
+  "data": {
+    "url": "data/SMA.csv"
+  },
+  "autosize": {"type": "fit", "contains": "padding"},
 
-  "repeat": ["Sleep_Hours_Per_Night","Mental_Health_Score","Affects_Academic_Performance_Calculated","Conflicts_Over_Social_Media", "Addicted_Score"],
-  "columns": 2,
+  
+  "repeat": [
+    "Number of Sleep Hours per Night",
+    "Mental Health Score",
+    "Affected Academic Performance",
+    "Conflicts Over Social Media",
+    "Addicted Score"
+  ],
+  "columns": 3,
   "spec": {
-    "width": 400,
-    "height": 400,
-
-    "mark": {"type": "bar", "color": "#4682b4"},
-
+    "width": 370,
+    "height": 250,
+    "mark": {
+      "type": "bar",
+      "color": "#4682b4"
+    },
     "transform": [
-          { "filter": "datum.Avg_Daily_Usage_Hours > 0" },
-          { "calculate": "datum.Affects_Academic_Performance == 'Yes' ? 1 : 0", "as" : "Affects_Academic_Performance_Calculated"}
-        ],
-
-
-
+      {
+        "filter": "datum.Avg_Daily_Usage_Hours > 0"
+      },
+      {
+        "calculate": "datum.Affected_Academic_Performance == 'Yes' ? 100 : 0",
+        "as": "Affected Academic Performance"
+      },
+      {
+        "bin": {"step": 0.5},
+        "field": "HoursPerDay",
+        "as": ["bin_start", "bin_end"]
+      }
+    ],
     "encoding": {
       "x": {
         "field": "Avg_Daily_Usage_Hours",
         "type": "quantitative",
-        "bin": {"step" : 0.5},
-        "title": "Time Spent on Social Media (hours/day)"
+        "bin": {
+          "step": 0.5
+        },
+        "axis": {"title" : "Time Spent on Social Media (hours/day)", "titleFontSize": 14}
       },
       "y": {
-        "aggregate" : "average",
-        "field":  {"repeat": "repeat"},
+        "aggregate": "average",
+        "field": {
+          "repeat": "repeat"
+        },
+        "axis": {"titleFontSize": 14},
         "type": "quantitative"
       },
       "tooltip": [
-        {"field": "Avg_Daily_Usage_Hours", "bin": true, "title": "Hours/Day"},
-        {"aggregate": "average", "field": "sleep_hours", "title": "Count"}
+        {
+          "type" : "nominal",
+          "field": "HoursPerDay",
+          "bin": true,
+          "title": "Hours/Day",
+          "format": ".1f"
+        },
+        {
+          "aggregate": "average",
+          "format": ".1f",
+          "field": {"repeat": "repeat"},
+          "title": "Average"
+        }
       ]
     }
   }

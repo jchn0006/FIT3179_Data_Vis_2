@@ -1,10 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Distribution of Subscribers by Category",
+  "title": { "text": "Distribution of Subscribers by Category", "fontSize" : 22},
   "data": {"url": "data/SMA.csv"},
-  "width": 800,
-  "height": 400,
-
+  "width": 810,
+  "height": 600,
   
   
   "layer": [
@@ -20,16 +19,21 @@
     "x": {
       "field": "Age",
       "type": "quantitative",
-      "title": "Average Views",
-      "scale": {"type" : "linear", "domain": [18, 24]}
+      "title": "Age",
+      "scale": {"type" : "linear", "domain": [17, 25]}, "axis": {"tickCount": 6, "titleFontSize": 14}
     },
     "y": {
       "field": "Avg_Daily_Usage_Hours",
       "aggregate": "mean",
       "type": "quantitative",
       "title": "Average Likes",
-      "scale": {"type" : "linear", "domain": [0, 8]}
+      "scale": {"type" : "linear", "domain": [0, 8]},
+      "axis": {"titleFontSize": 14}
     },
-    "color": {"field": "Relationship_Status", "type": "nominal", "scale": {"domain": ["Single", "In Relationship", "Complicated"], "range": ["#1f77b4", "#ff8B00", "#ff7f0e"]}}
+    "color": {"field": "Relationship_Status", "type": "nominal", "scale": {"domain": ["Single", "In Relationship", "Complicated"], "range": ["#7DCE82", "#E8E288", "#FF8360"]}, "legend" : {"title" : "Relationship Status"}},
+    "tooltip": [
+      {"field": "Relationship_Status", "title": "Relationship Status"},
+      {"field": "Avg_Daily_Usage_Hours", "aggregate": "mean","title": "Average Daily Usage Hours", "format": ".2f"}
+    ]
   }
 }

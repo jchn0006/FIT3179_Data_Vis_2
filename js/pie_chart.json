@@ -1,24 +1,79 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Distribution of Influencers by Category",
+  "title": {"text": "Pie Chart of Preferred Social Media Platform", "fontSize": 22},
   "data": {"url": "data/SMA.csv"},
-  "mark": {"type": "arc", "outerRadius": 100},
+  "width": 560,
+  "height": 600,
 
-  "width": 800,
-  "height": 400,
-  "encoding": {
-    "theta": {
-      "field": "Most_Used_Platform",
-      "aggregate": "count",
-      "type": "quantitative",
-      "title": "Platform",
-      "sort": {"op": "count", "order" : "descending"}
+  "transform": [
+    {
+      "calculate": "datum.Most_Used_Platform == 'KakaoTalk' ? 'Other' : datum.Most_Used_Platform == 'VKontakte' ? 'Other' : datum.Most_Used_Platform == 'LINE' ? 'Other' : datum.Most_Used_Platform ",
+      "as": "MUP"
     },
-    "color": {
-      "field": "Most_Used_Platform",
-      "type": "nominal",
-      "title": "Category",
-      "sort": {"op": "count", "order" : "descending"}
+    {
+      "aggregate": [{"op": "count", "as": "Count"}],
+      "groupby": ["MUP"]
+    },
+    {
+      "stack": "Count",
+      "as": ["stack_start", "stack_end"],
+      "sort": [{"field": "Count", "order": "descending"}],
+      "groupby": ["MUP"]
+    },
+    {
+      "joinaggregate": [{"op": "sum", "field": "Count", "as": "Total"}]
+    },
+    {
+      "calculate": "datum.Count / datum.Total * 100",
+      "as": "Percent"
     }
+  ],
+
+  "mark": {"type": "arc", "outerRadius": 220},
+
+  "encoding": {
+    "theta": {"field": "Percent", "type": "quantitative", "sort" : "-x"},
+    "color": {
+      "field": "MUP",
+      "type": "nominal",
+      "title": "Platform",
+       "scale": {
+      "domain": [
+        "Facebook",
+        "Instagram",
+        "LinkedIn",
+        "Other",
+        "Snapchat",
+        "TikTok",
+        "Twitter",
+        "WeChat",
+        "WhatsApp",
+        "YouTube"
+      ],
+      "range": [
+        "#3b5998", 
+        "#e1306c", 
+        "#0a66c2",  
+        "#9e9e9e",  
+        "#fffc00",  
+        "#25F4EE",  
+        "#1DA1F2", 
+        "#1AAD19",  
+        "#25D366",  
+        "#ff523b"   
+      ]
+  }
+    },
+    "order" : {"field": "Percent", "type" : "quantitative", "sort": "descending"},
+    "tooltip": [
+      {"field": "MUP", "title": "Platform"},
+      {"field": "Percent", "type": "quantitative", "title": "Percentage of Users", "format": ".2f"}
+    ]
+  },
+
+  "config": {
+    "title": {"fontSize": 22},
+    "legend": {"titleFontSize": 14, "labelFontSize": 12},
+    "view": {"stroke": null}
   }
 }

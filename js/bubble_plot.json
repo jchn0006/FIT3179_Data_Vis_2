@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Influencer Engagement Bubble Plot",
+  "title": {"text" : "Youtuber Engagement Bubble Plot", "fontSize": 22},
   "data": {"url": "./data/youtube_data_cleaned.csv"},
-  "width": 1200,
-  "height": 600,
+  "width": 850,
+  "height": 550,
 
   "params": [
     {
@@ -22,21 +22,13 @@
   "transform": [
         { "filter": "datum.Avg_views > 0" },
         { "filter": "datum.Avg_likes > 0" },
-        { "filter": "datum.Subscribers >= MinSubs" },
-
-        {"calculate": "split(datum.text_annotation_raw, ';')", "as": "lines"},
-        {"flatten": ["lines"]},
-        {"window": [{"op": "rank", "as": "line_num"}]},
-        {
-          "calculate": "datum.latitude - (datum.line_num - 1) * 6",
-          "as": "lat_shift"
-        }
+        { "filter": "datum.Subscribers >= MinSubs" }
       
       ],
 
 
   "layer" : [
-    {"mark": {"type": "circle", "opacity": 0.7, "stroke": "black", "strokeWidth": 0.5},
+    {"mark": {"type": "circle", "color" : "#C455A8","opacity": 0.7, "stroke": "black", "strokeWidth": 0.5},
     "encoding": {
       "x": {
         "field": "Avg_views",
@@ -54,7 +46,8 @@
         "field": "Subscribers",
         "type": "quantitative",
         "title": "Subscribers",
-        "scale": {"range": [10, 2000]}
+        "scale": {"range": [10, 2000]},
+        "legend" : null
       },
       "opacity": {
                   "condition": {
@@ -65,17 +58,17 @@
 
       "tooltip": [
           {"field": "Name", "type": "nominal"},
-          {"field": "Subscribers", "type": "quantitative"},
-          {"field": "Avg_views", "type": "quantitative"},
-          {"field": "Avg_likes", "type": "quantitative"}
+          {"field": "Subscribers", "type": "quantitative", "format": ",.0f"},
+          {"field": "Avg_views", "type": "quantitative", "title" : "Average Views Per Video", "format": ",.0f"},
+          {"field": "Avg_likes", "type": "quantitative", "title" : "Average Likes Per Video", "format": ",.0f"}
       ] }
     },
       
 
     {"mark": {"type": "text", "align": "left", "dx": 8, "dy": 0, "fontSize": 12},
               "encoding": {
-              "x": {"field": "Avg_views", "type": "quantitative", "scale": {"type" : "log", "domain": [100, 100000000]}},
-              "y": {"field": "Avg_likes", "type": "quantitative", "scale": {"type" : "log", "domain": [1, 10000000]}},
+              "x": {"field": "Avg_views", "type": "quantitative", "scale": {"type" : "log", "domain": [100, 100000000]}, "axis": {"titleFontSize": 14}},
+              "y": {"field": "Avg_likes", "type": "quantitative", "scale": {"type" : "log", "domain": [1, 10000000]}, "axis": {"titleFontSize": 14}},
               "text": {"field": "Name"},
               "opacity": {
                 "condition": {
@@ -100,13 +93,31 @@
                 "value": 0
               }
           }
+      },
+
+      {
+      "data": {
+        "sequence": {
+          "start": 100,
+          "stop": 100000000,
+          "step": 1000,
+          "as": "x"
+        }
+      },
+      "transform": [
+        {"calculate": "datum.x/25", "as": "y"} 
+      ],
+      "mark": {"type": "line", "color": "red", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"type" : "log", "domain": [100, 100000000]}},
+        "y": {"field": "y", "type": "quantitative", "scale" : {"type" : "log", "domain": [1, 10000000]}}
       }
+    }
       
       
     ]
   ,
   "config": {
-    "view": {"stroke": null},
-    "legend": {"titleFontSize": 12, "labelFontSize": 11}
+    "view": {"stroke": null}
   }
 }

@@ -1,27 +1,49 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Distribution of Subscribers by Category",
-  "data": {"url": "data/SMA.csv"},
-  "width": 800,
-  "height": 400,
-
-  
-  "mark": "boxplot",
-
+  "title": { "text": "Boxplot of Social Media Time by Age", "fontSize" : 22},
+  "data": {
+    "url": "data/SMA.csv"
+  },
+  "width": "container",
+  "height": 600,
+  "mark": {"type" : "boxplot"},
   "encoding": {
     "x": {
       "field": "Age",
       "type": "quantitative",
-      "title": "Average Views",
-      "scale": {"type" : "linear", "domain": [18, 24]}
+      "title": "Age",
+      "scale": {
+        "type": "linear",
+        "domain": [
+          17,
+          25
+        ]
+      },
+      "axis": {"tickCount": 6, "titleFontSize": 14}
     },
-    "y": {
-      "field": "Avg_Daily_Usage_Hours",
-      "aggregate": "mean",
-      "type": "quantitative",
-      "title": "Average Likes",
-      "scale": {"type" : "linear", "domain": [0, 8]}
-    },
-    "color": {"field": "Category", "type": "nominal", "legend": null}
+
+
+
+  "y": {
+    "field": "Avg_Daily_Usage_Hours",
+    "aggregate": "mean",
+    "type": "quantitative",
+    "title": "Average Hours on Social Media Daily",
+
+    "scale": {
+      "type": "linear",
+      "domain": [
+        0,
+        10
+      ]
+    }, 
+    "axis": {"titleFontSize": 14}
+  },
+  "color": {
+    "field": "Category",
+    "type": "nominal",
+    "legend": null,
+    "scale" : {"range" : ["#75B9BE"]}
   }
+}
 }

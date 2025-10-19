@@ -1,10 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Top YouTubers by Subscribers", "fontSize" : 18 },
+  "title": { "text": "Top YouTubers by Subscribers", "fontSize" : 22},
   "data": { "url": "./data/youtube_data_cleaned.csv" },
-  "width": 800,
-  "height": 400,
-  "autosize": {"type": "fit", "contains": "padding"},
+  "width": 1100,
+  "height": 550,
 
   "params": [
     {
@@ -14,11 +13,14 @@
         "input": "select",
         "options": [
           "All",
-          "India",
           "United States",
+          "India",
           "Brazil",
+          "Mexico",
           "United Kingdom",
-          "Mexico"
+          "Spain",
+          "Indonesia",
+          "Russia"
         ],
         "name": "Select Country: "
       }
@@ -36,12 +38,12 @@
         {"filter": "datum.Rank <= 10"} 
     ],
 
-  "mark": "bar",
+  "mark": {"type" : "bar", "color": "#CD201F", "opacity": 0.7},
   "encoding": {
-    "x": { "field": "Subscribers", "type": "quantitative", "title": "Subscribers"},
-    "y": { "field": "Name", "type": "nominal", "sort": "-x", "axis": {"labelLimit": 0, "labelFontSize": 14, "labelPadding": 30}},
+    "x": { "field": "Subscribers", "type": "quantitative", "title": "Subscribers", "axis": {"titleFontSize": 14}},
+    "y": { "field": "Name", "type": "nominal", "sort": "-x", "axis": {"labelLimit": 0, "labelFontSize": 14, "labelPadding": 30, "titleFontSize": 14}},
     "tooltip": [
-      { "field": "Name of Youtuber" },
+      { "field": "Name", "title": "Name of Youtuber" },
       { "field": "Subscribers", "format": ",.0f"},
       { "field": "Country" }
     ]
