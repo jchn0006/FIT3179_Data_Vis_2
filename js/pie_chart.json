@@ -1,9 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Pie Chart of Preferred Social Media Platform", "fontSize": 22},
+  "title": {"text": "Pie Chart of Preferred Social Media Platform", "fontSize": 30},
   "data": {"url": "data/SMA.csv"},
-  "width": 560,
-  "height": 600,
+  "height": 560,
+  "width": "container",
+  "autosize": {"type": "fit", "contains": "padding"},
 
   "transform": [
     {
@@ -29,7 +30,7 @@
     }
   ],
 
-  "mark": {"type": "arc", "outerRadius": 220},
+  "mark": {"type": "arc", "outerRadius": 150},
 
   "encoding": {
     "theta": {"field": "Percent", "type": "quantitative", "sort" : "-x"},
@@ -37,6 +38,7 @@
       "field": "MUP",
       "type": "nominal",
       "title": "Platform",
+      "legend" : {"symbolSize" : 200, "labelFontSize": 16, "titleFontSize" : 20},
        "scale": {
       "domain": [
         "Facebook",

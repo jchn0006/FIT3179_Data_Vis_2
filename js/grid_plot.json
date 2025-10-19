@@ -1,9 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text" : "Video Genres of Top 1000 Youtubers", "fontSize": 22},
+    "title": {"text" : "Video Genres of Top 1000 Youtubers", "fontSize": 30},
     "data": { "url": "./data/youtube_data_cleaned_fixed.csv" },
-    "width": 800,
     "height": 600,
+    "width": "container",
+    "autosize": {"type": "fit", "contains": "padding"},
     
     "transform": [
         {
@@ -55,6 +56,7 @@
             "field": "Category_2",
             "type": "nominal",
             "title": "Genre",
+            "legend" : {"symbolSize" : 200, "labelFontSize": 16, "titleFontSize" : 20},
             "scale" : {"range" : ["#EE6C4D","#FED766","#009FB7","#575D90","#00AF54"]}
             },
 
@@ -62,6 +64,7 @@
             {"field": "Name", "type": "nominal"},
             {"field": "Category_2", "type": "nominal", "title" : "Genre"}
             ]
+            
         }}
     ]
 

@@ -1,9 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Distribution of Subscribers by Category", "fontSize" : 22},
+  "title": { "text": "Distribution of Subscribers by Category", "fontSize" : 30},
   "data": {"url": "data/SMA.csv"},
-  "width": 810,
   "height": 600,
+  "width": "container",
+  "autosize": {"type": "fit", "contains": "padding"},
   
   
   "layer": [

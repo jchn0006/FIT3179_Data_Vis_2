@@ -1,9 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text" : "Youtuber Engagement Bubble Plot", "fontSize": 22},
+  "title": {"text" : "Youtuber Engagement Bubble Plot", "fontSize": 30},
   "data": {"url": "./data/youtube_data_cleaned.csv"},
-  "width": 850,
-  "height": 550,
+  "height": 600,
+  "width": "container",
+  "autosize": {"type": "fit", "contains": "padding"},
 
   "params": [
     {

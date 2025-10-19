@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text" : "Number of Youtuber in the Top 1000 from each country", "fontSize": 22},
-  "width": 1450,
+  "title": {"text" : "Number of Youtuber in the Top 1000 from each country", "fontSize": 30},
+  "width": "container",
   "height": 600,
   "autosize": {"type": "fit", "contains": "padding"},
   "data": {
@@ -56,7 +56,7 @@
                 "field": "num_occurrences",
                 "type": "quantitative",
                 "scale": {"range" : [100,5000]},
-                "legend" : {"title":"Number of Youtubers"}
+                "legend" : {"title":"Number of Youtubers","labelFontSize": 16, "titleFontSize" : 20}
 
             },
                      "tooltip": [

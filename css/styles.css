@@ -75,8 +75,8 @@ p3 {
 }
 
 .vis-container {
-  width:  90%;
-  height: 90%;
+  width:  100%;
+  height: 100%;
 }
 
 .description-right {
@@ -87,8 +87,14 @@ p3 {
   padding-right: 20px;
 }
 
+.description-middle {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .pure-g {
   margin-top: 30px;
   margin-bottom: 0px;
+  margin-left: 0px;
   height: 700px;
 }

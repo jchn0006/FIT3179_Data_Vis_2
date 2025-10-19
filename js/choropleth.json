@@ -1,9 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text" : "Average Social Media Time from Each Country", "fontSize": 22},
+    "title": {"text" : "Average Social Media Time from Each Country", "fontSize": 30},
     
-    "width": "container",
     "height": 600,
+    "width": "container",
+    "autosize": {"type": "fit", "contains": "padding"},
     "data": {
         "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
         "format": {
