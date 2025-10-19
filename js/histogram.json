@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text" : "Histogram of Effects from Social Media Time", "fontSize": 22},
+  "title": {"text" : "Histogram of Effects from Social Media Time", "fontSize": 26},
   "data": {
     "url": "data/SMA.csv"
   },
@@ -16,8 +16,8 @@
   ],
   "columns": 3,
   "spec": {
-    "width": 370,
-    "height": 250,
+    "width": 250,
+    "height": 200,
     "mark": {
       "type": "bar",
       "color": "#4682b4"

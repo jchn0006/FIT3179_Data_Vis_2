@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Boxplot of Social Media Time by Age", "fontSize" : 30},
+  "title": { "text": "Boxplot of Social Media Time by Age", "fontSize" : 26},
   "data": {
     "url": "data/SMA.csv"
   },
-  "height": 600,
+  "height": 650,
   "width": "container",
   "autosize": {"type": "fit", "contains": "padding"},
   "mark": {"type" : "boxplot"},

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text" : "Number of Youtuber in the Top 1000 from each country", "fontSize": 30},
+  "title": {"text" : "Number of Youtuber in the Top 1000 from each country", "fontSize": 26},
   "width": "container",
-  "height": 600,
+  "height": 650,
   "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",

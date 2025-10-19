@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Top YouTubers by Subscribers", "fontSize" : 30},
+  "title": { "text": "Top YouTubers by Subscribers", "fontSize" : 26},
   "data": { "url": "./data/youtube_data_cleaned.csv" },
-  "height": 600,
+  "height": 650,
   "width": "container",
   "autosize": {"type": "fit", "contains": "padding"},
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Pie Chart of Preferred Social Media Platform", "fontSize": 30},
+  "title": {"text": "Pie Chart of Preferred Social Media Platform", "fontSize": 26},
   "data": {"url": "data/SMA.csv"},
-  "height": 560,
+  "height": 650,
   "width": "container",
   "autosize": {"type": "fit", "contains": "padding"},
 
@@ -54,7 +54,7 @@
       ],
       "range": [
         "#3b5998", 
-        "#e1306c", 
+        "#e1266c", 
         "#0a66c2",  
         "#9e9e9e",  
         "#fffc00",  

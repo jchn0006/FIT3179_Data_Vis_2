@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Distribution of Subscribers by Category", "fontSize" : 30},
+  "title": { "text": "Distribution of Subscribers by Category", "fontSize" : 26},
   "data": {"url": "data/SMA.csv"},
-  "height": 600,
+  "height": 650,
   "width": "container",
   "autosize": {"type": "fit", "contains": "padding"},
   
@@ -27,7 +27,7 @@
       "field": "Avg_Daily_Usage_Hours",
       "aggregate": "mean",
       "type": "quantitative",
-      "title": "Average Likes",
+      "title": "Average Daily Social Media Time (Hours)",
       "scale": {"type" : "linear", "domain": [0, 8]},
       "axis": {"titleFontSize": 14}
     },

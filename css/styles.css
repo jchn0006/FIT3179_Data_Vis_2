@@ -15,7 +15,7 @@ h2 {
   text-align: center;
   font-size: 60px;
   margin-top: 30px;
-  margin-bottom: 0px;
+  margin-bottom: 30px;
 }
 
 body {
@@ -52,7 +52,7 @@ p2 {
     unicode-bidi: isolate;
     height: 100%;
     margin-top: 0px;
-   margin-bottom: 0px;
+   margin-bottom: 50px;
 }
 
 p3 {
@@ -67,7 +67,7 @@ p3 {
 
 
 .page {
-  width: 2000px;
+  width: 1600px;
   margin: auto;
   padding: 50px;
   padding-top: 35px;
@@ -93,7 +93,7 @@ p3 {
 }
 
 .pure-g {
-  margin-top: 30px;
+  margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 0px;
   height: 700px;
